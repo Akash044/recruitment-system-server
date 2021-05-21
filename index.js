@@ -31,6 +31,7 @@ const employerCollection = db.collection(process.env.db1);
 const postCollection = db.collection(process.env.db2);
 const applicantCollection = db.collection(process.env.db3);  
 
+
 app.post("/addEmployer", (req, res) => {
   const email = req.body.employerEmail;
 
@@ -42,6 +43,7 @@ app.post("/addEmployer", (req, res) => {
       res.send(result);
     });
 });
+
 
 app.get("/isEmployer", async (req, res) => {
   const email = req.query.email;
@@ -57,6 +59,7 @@ app.get("/isEmployer", async (req, res) => {
   });
 });
 
+
 app.post("/addPost", (req, res) => {
   const jobInfo = req.body;
 
@@ -64,6 +67,7 @@ app.post("/addPost", (req, res) => {
     res.send(result);
   });
 });
+
 
 app.get("/allPost", async (req, res) => {
   const email = req.query.email;
@@ -85,6 +89,7 @@ app.get("/allPost", async (req, res) => {
       });
 });
 
+
 app.post("/addApplicant", (req, res) => {
   const applicantInfo = req.body;
 
@@ -93,6 +98,7 @@ app.post("/addApplicant", (req, res) => {
     res.send(result);
   });
 });
+
 
 app.get("/allApplicants",async (req, res) => {
   const jobId = req.query.jobId;
@@ -123,4 +129,4 @@ app.get("/appliedPosts",async (req, res) => {
   });
 });
 
-app.listen(8080);
+app.listen(process.env.PORT || 8080);
